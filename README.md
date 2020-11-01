@@ -1,4 +1,4 @@
-# Synthetic OCR data generation
+# A synthetic OCR data generatior
 This repository is to generate synthetic data for scene text detection and recognition from open source tools.
 
 ## Script command example
@@ -18,7 +18,7 @@ python synthetic_generator.py --data ./synthetic --image ./synthetic/images/ --l
 
 --num: Number of synthetic images to be generated.
 
-*Other parameters e.g., font size, rotation angle,...etc can be tuned inside main function.
+*Other parameters e.g., font size, word line rotation angle,...etc can be tuned inside main generator function.
 
 ## Image generated examples
 ![synthetic image 1](https://github.com/liuch37/synthetic-ocr-data/blob/main/misc/image1.png)
