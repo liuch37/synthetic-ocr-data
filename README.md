@@ -19,9 +19,11 @@ python synthetic_generator.py --data ./synthetic --image ./synthetic/images/ --l
 --num: Number of synthetic images to be generated.
 
 ## image generated examples
-![synthetic image 1](https://github.com/liuch37/synthetic-ocr-data/blob/master/misc/image1.png)
-![synthetic image 2](https://github.com/liuch37/synthetic-ocr-data/blob/master/misc/image2.png)
+![synthetic image 1](https://github.com/liuch37/synthetic-ocr-data/blob/main/misc/image1.png)
+
+![synthetic image 2](https://github.com/liuch37/synthetic-ocr-data/blob/main/misc/image2.png)
 
 ## patch generated examples
-![synthetic patch 1](https://github.com/liuch37/synthetic-ocr-data/blob/master/misc/patch1.png)
-![synthetic patch 2](https://github.com/liuch37/synthetic-ocr-data/blob/master/misc/patch2.png)
+![synthetic patch 1](https://github.com/liuch37/synthetic-ocr-data/blob/main/misc/patch1.png)
+
+![synthetic patch 2](https://github.com/liuch37/synthetic-ocr-data/blob/main/misc/patch2.png)
