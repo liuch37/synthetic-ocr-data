@@ -5,6 +5,7 @@ import datetime
 import string
 import math
 import os
+import argparse
 
 import tqdm
 import matplotlib.pyplot as plt
@@ -17,12 +18,48 @@ import keras_ocr
 import pdb
 
 if __name__ == '__main__':
-    # paramters
-    data_dir = './synthetic/'
-    image_dir = './synthetic/images/'
-    label_dir = './synthetic/labels/'
-    word_dir = './synthetic/words/'
-    num_images = 10
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        '--data', type=str, default='synthetic', help='directory to store downloaded data')
+    parser.add_argument(
+        '--image', type=str, default='images', help='directory to store synthesized images')
+    parser.add_argument(
+        '--label', type=str, default='labels', help='directory to store synthesized polygon labels for each synthesized image')
+    parser.add_argument('--word', type=str, default='words', help='directory to store word labels for each synthesized image')
+    parser.add_argument('--patch', type=str, default='patches', help='directory to store word patches with its name as word label')
+    parser.add_argument('--num', type=int, default=1, help='number of synthetic images to be generated')
+
+    opt = parser.parse_args()
+    print(opt)
+
+    data_dir = opt.data
+    image_dir = opt.image
+    label_dir = opt.label
+    word_dir = opt.word
+    patch_dir = opt.patch
+    num_images = opt.num
+
+    # make output folders
+    try:
+        os.makedirs(data_dir)
+    except OSError:
+        pass
+    try:
+        os.makedirs(image_dir)
+    except OSError:
+        pass
+    try:
+        os.makedirs(label_dir)
+    except OSError:
+        pass
+    try:
+        os.makedirs(word_dir)
+    except OSError:
+        pass
+    try:
+        os.makedirs(patch_dir)
+    except OSError:
+        pass
 
     alphabet = string.printable[:-6] # 94 valid char
     #recognizer_alphabet = ''.join(sorted(set(alphabet.lower())))
@@ -85,9 +122,12 @@ if __name__ == '__main__':
                 f.writelines(word+'\n')
 
             pts = np.array(polygon_xy_pair, np.int32)
-            pts = pts.reshape((-1,1,2))
-            cv2.polylines(image_overlay,[pts],True,(0,255,0), 8)
+            #pts = pts.reshape((-1,1,2))
+            #cv2.polylines(image_overlay,[pts],True,(0,255,0), 8)
+            xmin, ymin, xmax, ymax = min(pts[:,0]), min(pts[:,1]), max(pts[:,0]), max(pts[:,1])
+            patch = image[ymin:ymax+1, xmin:xmax+1, :]
+            plt.imsave(os.path.join(patch_dir, str(word)+'.png'), patch)
 
         plt.imsave(os.path.join(image_dir, str(idx)+'.png'), image)
-        plt.imshow(image_overlay)
-        plt.show()
+        #plt.imshow(image_overlay)
+        #plt.show()
