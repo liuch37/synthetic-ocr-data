@@ -18,6 +18,8 @@ python synthetic_generator.py --data ./synthetic --image ./synthetic/images/ --l
 
 --num: Number of synthetic images to be generated.
 
+*Other parameters e.g., font size, rotation angle,...etc can be tuned inside main function.
+
 ## image generated examples
 ![synthetic image 1](https://github.com/liuch37/synthetic-ocr-data/blob/main/misc/image1.png)
 
