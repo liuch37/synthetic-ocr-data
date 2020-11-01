@@ -30,5 +30,5 @@ python synthetic_generator.py --data ./synthetic --image ./synthetic/images/ --l
 
 ![synthetic patch 2](https://github.com/liuch37/synthetic-ocr-data/blob/main/misc/patch2.png)
 
-# References
+## References
 [1] https://github.com/faustomorales/keras-ocr
